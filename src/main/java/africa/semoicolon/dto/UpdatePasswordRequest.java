@@ -8,5 +8,6 @@ public class UpdatePasswordRequest{
     private String password;
     private String sitePassword;
     private String sitename;
+    private String siteUsername;
 
 }

@@ -68,7 +68,7 @@ public class WebsiteDetailsTest{
         request.setUsername("name");
         request.setPassword("123456789");
         assertEquals("no password saved yet",
-                websiteDetailsService.viewAllSiteDetails(request));
+                websiteDetailsService.viewAllSiteDetails(request).getBody());
         CreateWebDetailsRequest webDetails= new CreateWebDetailsRequest();
         webDetails.setUsername("name");
         webDetails.setSiteUsername("username");
@@ -82,9 +82,10 @@ public class WebsiteDetailsTest{
     @Test
     public void updatePasswordDetails_testWebsiteDetailsIsUpdated(){
         UpdatePasswordRequest updateRequest = new UpdatePasswordRequest();
-        updateRequest.setSitename("name");
+        updateRequest.setSitename("www.google.com");
         updateRequest.setPassword("pass");
-        updateRequest.setUsername("username");
+        updateRequest.setUsername("name");
+        updateRequest.setSiteUsername("username");
         updateRequest.setSitePassword("123456789");
         assertThrows(SiteNotFoundException.class, ()->websiteDetailsService.updateWebsiteDetails(updateRequest));
         CreateWebDetailsRequest webDetails= new CreateWebDetailsRequest();
@@ -98,8 +99,11 @@ public class WebsiteDetailsTest{
         request.setUsername("name");
         request.setPassword("123456789");
         ViewAllResponse response = websiteDetailsService.viewAllSiteDetails(request);
-        assertEquals("Site : www.google.com\nSite username : username" +
-                             "\n Website Password : 123456789\n", response.getBody());
+        assertEquals("""
+                Site : www.google.com
+                Site username : username
+                 Website Password : pass
+                """, response.getBody());
 
     }
 }

@@ -3,6 +3,7 @@ package africa.semoicolon.utils;
 import africa.semoicolon.Exception.InvalidFieldException;
 import africa.semoicolon.dto.CreateWebDetailsRequest;
 import africa.semoicolon.dto.DeleteWebDetails;
+import africa.semoicolon.dto.UpdatePasswordRequest;
 import africa.semoicolon.dto.ViewAllRequest;
 
 import java.util.Optional;
@@ -30,5 +31,13 @@ public class Validator{
     public static void validateViewRequest(ViewAllRequest request){
         validate(request.getPassword( ));
         validate(request.getPassword());
+    }
+
+    public static void validateUpdate(UpdatePasswordRequest updateRequest){
+        validate(updateRequest.getPassword());
+        validate(updateRequest.getUsername());
+        validate(updateRequest.getSitePassword());
+        validate(updateRequest.getSitename());
+        validate(updateRequest.getSiteUsername( ));
     }
 }

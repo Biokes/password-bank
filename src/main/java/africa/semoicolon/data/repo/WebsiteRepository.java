@@ -12,4 +12,10 @@ public interface WebsiteRepository extends MongoRepository<WebsiteDetail, String
     void deleteByUsernameAndWebsiteName(String username, String WebsiteName);
     Optional<WebsiteDetail> findByWebsiteName(String siteName);
     List<WebsiteDetail> findAllByUsername(String username);
+
+    WebsiteDetail findByWebsiteNameAndUsernameAndAndWebsiteUsername(String sitename,
+                                                                    String username,
+                                                                    String websiteUsername);
+
+    Optional<WebsiteDetail> findByWebsiteNameAndUsername(String siteName, String username);
 }

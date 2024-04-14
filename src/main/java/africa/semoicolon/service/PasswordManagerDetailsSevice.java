@@ -3,6 +3,7 @@ package africa.semoicolon.service;
 import africa.semoicolon.data.model.WebsiteDetail;
 import africa.semoicolon.data.repo.WebsiteRepository;
 import africa.semoicolon.dto.CreateWebDetailsRequest;
+import africa.semoicolon.utils.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

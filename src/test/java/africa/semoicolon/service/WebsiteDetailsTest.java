@@ -32,6 +32,8 @@ public class WebsiteDetailsTest{
         CreateWebDetailsRequest webDetails= new CreateWebDetailsRequest();
         webDetails.setUsername("name");
         webDetails.setSiteUsername("username");
-        assertThrows(InvalidFieldException.class,()->websiteDetailsService.saveDetails(webDetails);
+        assertThrows(InvalidFieldException.class,
+                ()->websiteDetailsService.saveDetails(webDetails));
+
     }
 }

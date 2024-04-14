@@ -16,6 +16,7 @@ public class PasswordManagerDetailsSevice implements WebsiteDetailsService{
         repository.deleteAll();
     }
     public void saveDetails(CreateWebDetailsRequest webDetails){
+        Validator.validateCreateWebRequest(webDetails);
         WebsiteDetail details = mapWebDetails(webDetails);
         repository.save(details);
     }

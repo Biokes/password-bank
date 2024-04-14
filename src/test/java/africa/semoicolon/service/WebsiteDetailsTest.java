@@ -28,7 +28,7 @@ public class WebsiteDetailsTest{
         webDetails.setSitePassword("123456789");
         webDetails.setSiteName("www.google.com");
         websiteDetailsService.saveDetails(webDetails);
-        assertEquals(1,websiteDetailsService.countByUsername("name"));
+        assertEquals(1, websiteDetailsService.countByUsername("name"));
     }
     @Test
     public void createWebsiteDatailsWithInvalidDetails_testExceptionIsThrown(){
@@ -45,6 +45,22 @@ public class WebsiteDetailsTest{
         deleteDetails.setUsername("username");
         deleteDetails.setPassword("password");
         deleteDetails.setSiteName("www.google.com");
-        assertThrows(SiteNotFoundException.class,()->websiteDetailsService.deleteSite(deleteDetails));
+        assertThrows(SiteNotFoundException.class,
+                ()->websiteDetailsService.deleteSite(deleteDetails));
+        CreateWebDetailsRequest webDetails= new CreateWebDetailsRequest();
+        webDetails.setUsername("name");
+        webDetails.setSiteUsername("username");
+        webDetails.setSitePassword("123456789");
+        webDetails.setSiteName("www.google.com");
+        websiteDetailsService.saveDetails(webDetails);
+        deleteDetails.setUsername("name");
+        deleteDetails.setPassword("123456789");
+        deleteDetails.setSiteName("www.google.com");
+        websiteDetailsService.deleteSite(deleteDetails);
+        assertEquals(0, websiteDetailsService.countByUsername("name"));
+    }
+    @Test
+    public void viewAllPasswordDetails_testAllPasswordsAreSeen(){
+
     }
 }

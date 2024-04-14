@@ -1,9 +1,9 @@
-package africa.semoicolon.service;
+package africa.semoicolon.service.interFace;
 
-import africa.semoicolon.dto.CreateWebDetailsRequest;
-import africa.semoicolon.dto.DeleteWebDetails;
-import africa.semoicolon.dto.UpdatePasswordRequest;
-import africa.semoicolon.dto.ViewAllRequest;
+import africa.semoicolon.dto.request.CreateWebDetailsRequest;
+import africa.semoicolon.dto.request.DeleteWebDetails;
+import africa.semoicolon.dto.request.UpdatePasswordRequest;
+import africa.semoicolon.dto.request.ViewAllRequest;
 import africa.semoicolon.dto.response.ViewAllResponse;
 import org.springframework.stereotype.Service;
 

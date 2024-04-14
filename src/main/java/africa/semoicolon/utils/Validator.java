@@ -1,10 +1,10 @@
 package africa.semoicolon.utils;
 
 import africa.semoicolon.Exception.InvalidFieldException;
-import africa.semoicolon.dto.CreateWebDetailsRequest;
-import africa.semoicolon.dto.DeleteWebDetails;
-import africa.semoicolon.dto.UpdatePasswordRequest;
-import africa.semoicolon.dto.ViewAllRequest;
+import africa.semoicolon.dto.request.CreateWebDetailsRequest;
+import africa.semoicolon.dto.request.DeleteWebDetails;
+import africa.semoicolon.dto.request.UpdatePasswordRequest;
+import africa.semoicolon.dto.request.ViewAllRequest;
 
 import java.util.Optional;
 

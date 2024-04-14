@@ -1,4 +1,4 @@
-package africa.semoicolon.dto;
+package africa.semoicolon.dto.request;
 
 import lombok.Data;
 

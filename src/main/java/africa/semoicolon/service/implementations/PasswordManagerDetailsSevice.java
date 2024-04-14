@@ -1,14 +1,14 @@
-package africa.semoicolon.service;
+package africa.semoicolon.service.implementations;
 
 import africa.semoicolon.Exception.SiteNotFoundException;
 import africa.semoicolon.data.model.WebsiteDetail;
 import africa.semoicolon.data.repo.WebsiteRepository;
-import africa.semoicolon.dto.CreateWebDetailsRequest;
-import africa.semoicolon.dto.DeleteWebDetails;
-import africa.semoicolon.dto.UpdatePasswordRequest;
-import africa.semoicolon.dto.ViewAllRequest;
+import africa.semoicolon.dto.request.CreateWebDetailsRequest;
+import africa.semoicolon.dto.request.DeleteWebDetails;
+import africa.semoicolon.dto.request.UpdatePasswordRequest;
+import africa.semoicolon.dto.request.ViewAllRequest;
 import africa.semoicolon.dto.response.ViewAllResponse;
-import africa.semoicolon.utils.Mapper;
+import africa.semoicolon.service.interFace.WebsiteDetailsService;
 import africa.semoicolon.utils.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-import static africa.semoicolon.utils.Encryption.decrypt;
 import static africa.semoicolon.utils.Mapper.mapUpdate;
 import static africa.semoicolon.utils.Mapper.mapWebDetails;
 import static africa.semoicolon.utils.Validator.validate;
@@ -71,7 +70,7 @@ public class PasswordManagerDetailsSevice implements WebsiteDetailsService{
         for(WebsiteDetail details: given){
             output.append(String.format("Site : %s\nSite username : %s\n Website Password : %s\n",
                     details.getWebsiteName(), details.getWebsiteUsername(),
-                    decrypt(details.getWebsitePassword(),100)));
+                    details.getWebsitePassword()));
         }
         return output.toString();
     }

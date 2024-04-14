@@ -2,11 +2,12 @@ package africa.semoicolon.service;
 
 import africa.semoicolon.Exception.InvalidFieldException;
 import africa.semoicolon.Exception.SiteNotFoundException;
-import africa.semoicolon.dto.CreateWebDetailsRequest;
-import africa.semoicolon.dto.DeleteWebDetails;
-import africa.semoicolon.dto.UpdatePasswordRequest;
-import africa.semoicolon.dto.ViewAllRequest;
+import africa.semoicolon.dto.request.CreateWebDetailsRequest;
+import africa.semoicolon.dto.request.DeleteWebDetails;
+import africa.semoicolon.dto.request.UpdatePasswordRequest;
+import africa.semoicolon.dto.request.ViewAllRequest;
 import africa.semoicolon.dto.response.ViewAllResponse;
+import africa.semoicolon.service.interFace.WebsiteDetailsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

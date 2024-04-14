@@ -2,6 +2,7 @@ package africa.semoicolon.service;
 
 import africa.semoicolon.Exception.InvalidFieldException;
 import africa.semoicolon.dto.CreateWebDetailsRequest;
+import africa.semoicolon.dto.DeleteWebDetails;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class WebsiteDetailsTest{
         webDetails.setUsername("name");
         webDetails.setSiteUsername("username");
         webDetails.setSitePassword("123456789");
+        webDetails.setSiteName("www.google.com");
         websiteDetailsService.saveDetails(webDetails);
         assertEquals(1,websiteDetailsService.countByUsername("name"));
     }
@@ -35,5 +37,13 @@ public class WebsiteDetailsTest{
         assertThrows(InvalidFieldException.class,
                 ()->websiteDetailsService.saveDetails(webDetails));
 
+    }
+    @Test
+    public void deleteWebsiteDetails_testwebsiteDetailsIsDeleted(){
+        DeleteWebDetails deleteDetails = new DeleteWebDetails();
+        deleteDetails.setUsername("username");
+        deleteDetails.setPassword("password");
+        deleteDetails.setSiteName("www.google.com");
+        assertThrows(SiteNotFoundExceptiion.class,()->websiteDetailsService.deleteSite(deleteDetails));
     }
 }

@@ -6,4 +6,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface WebsiteRepository extends MongoRepository<WebsiteDetail, String>{
     long countByUsername(String username);
+
+    void deleteByUsernameAndWebsiteName(String username, String WebsiteName);
 }

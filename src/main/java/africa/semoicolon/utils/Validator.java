@@ -2,6 +2,7 @@ package africa.semoicolon.utils;
 
 import africa.semoicolon.Exception.InvalidFieldException;
 import africa.semoicolon.dto.CreateWebDetailsRequest;
+import africa.semoicolon.dto.DeleteWebDetails;
 
 import java.util.Optional;
 
@@ -17,5 +18,11 @@ public class Validator{
         validate(webDetails.getUsername( ));
         validate(webDetails.getSitePassword( ));
         validate(webDetails.getSiteUsername());
+    }
+
+    public static void validateDeleteSite(DeleteWebDetails deleteDetails){
+        validate(deleteDetails.getSiteName( ));
+        validate(deleteDetails.getPassword( ));
+        validate(deleteDetails.getUsername( ));
     }
 }

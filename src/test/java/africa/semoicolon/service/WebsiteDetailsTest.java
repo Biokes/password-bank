@@ -1,6 +1,7 @@
 package africa.semoicolon.service;
 
 import africa.semoicolon.Exception.InvalidFieldException;
+import africa.semoicolon.Exception.SiteNotFoundException;
 import africa.semoicolon.dto.CreateWebDetailsRequest;
 import africa.semoicolon.dto.DeleteWebDetails;
 import org.junit.jupiter.api.BeforeEach;
@@ -44,6 +45,6 @@ public class WebsiteDetailsTest{
         deleteDetails.setUsername("username");
         deleteDetails.setPassword("password");
         deleteDetails.setSiteName("www.google.com");
-        assertThrows(SiteNotFoundExceptiion.class,()->websiteDetailsService.deleteSite(deleteDetails));
+        assertThrows(SiteNotFoundException.class,()->websiteDetailsService.deleteSite(deleteDetails));
     }
 }

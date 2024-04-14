@@ -6,6 +6,7 @@ import africa.semoicolon.dto.CreateWebDetailsRequest;
 import africa.semoicolon.dto.DeleteWebDetails;
 import africa.semoicolon.dto.UpdatePasswordRequest;
 import africa.semoicolon.dto.ViewAllRequest;
+import africa.semoicolon.dto.response.ViewAllResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,9 +75,9 @@ public class WebsiteDetailsTest{
         webDetails.setSitePassword("123456789");
         webDetails.setSiteName("www.google.com");
         websiteDetailsService.saveDetails(webDetails);
-        String response = websiteDetailsService.viewAllSiteDetails(request);
+        ViewAllResponse response = websiteDetailsService.viewAllSiteDetails(request);
         assertEquals("Site : www.google.com\nSite username : username\n Website Password : 123456789\n",
-                response);
+                response.getBody());
     }
     @Test
     public void updatePasswordDetails_testWebsiteDetailsIsUpdated(){

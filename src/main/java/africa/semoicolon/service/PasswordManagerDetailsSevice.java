@@ -7,6 +7,7 @@ import africa.semoicolon.dto.CreateWebDetailsRequest;
 import africa.semoicolon.dto.DeleteWebDetails;
 import africa.semoicolon.dto.UpdatePasswordRequest;
 import africa.semoicolon.dto.ViewAllRequest;
+import africa.semoicolon.dto.response.ViewAllResponse;
 import africa.semoicolon.utils.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,10 +40,12 @@ public class PasswordManagerDetailsSevice implements WebsiteDetailsService{
         repository.deleteByUsernameAndWebsiteName(deleteDetails.getUsername(),
                 deleteDetails.getSiteName());
     }
-    public String viewAllSiteDetails(ViewAllRequest request){
+    public ViewAllResponse viewAllSiteDetails(ViewAllRequest request){
         Validator.validateViewRequest(request);
+        ViewAllResponse response = new ViewAllResponse();
         List<WebsiteDetail> found =  repository.findAllByUsername(request.getUsername());
-        return matchDetailsToFound(found);
+        response.setBody(matchDetailsToFound(found));
+        return response;
     }
     public void updateWebsiteDetails(UpdatePasswordRequest updateRequest){
 

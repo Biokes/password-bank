@@ -50,5 +50,6 @@ public class UserServiceTest{
         userService.register(createRequest);
         userService.saveSiteDetails(webDetails);
         assertEquals(1, userService.countnAllUserDetails("name"));
+
     }
 }

@@ -1,6 +1,7 @@
 package africa.semoicolon.service.implementations;
 
 import africa.semoicolon.Exception.UserAlreadyExistException;
+import africa.semoicolon.Exception.UserNotFoundException;
 import africa.semoicolon.data.model.User;
 import africa.semoicolon.data.repo.UserRepository;
 import africa.semoicolon.dto.request.CreateUserRequest;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import static africa.semoicolon.utils.Validator.validate;
 import static africa.semoicolon.utils.Validator.validateCreateRequest;
@@ -45,7 +47,11 @@ public class PasswordUserService implements UserService{
                 throw new UserAlreadyExistException();
         }
     }
-
+    private void findUserByUsername(String username){
+      Optional<User> user = userRepository.findByUsername(username);
+      if(user.isPresent())
+          throw new UserNotFoundException();
+    }
 
 
     @Autowired

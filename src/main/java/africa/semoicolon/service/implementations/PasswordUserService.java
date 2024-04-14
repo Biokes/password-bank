@@ -43,7 +43,7 @@ public class PasswordUserService implements UserService{
 
     @Override
     public void updateSiteDetails(UpdatePasswordRequest webPassDetails){
-        validateUserNameExistence(webPassDetails.getUsername( ));
+        findUserByUsername(webPassDetails.getUsername( ));
         passwordDetails.updateWebsiteDetails(webPassDetails);
     }
 

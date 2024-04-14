@@ -71,5 +71,6 @@ public class UserServiceTest{
         createRequest.setLastname("lastname");
         userService.register(createRequest);
         userService.saveSiteDetails(webDetails);
+        userService.updateSiteDetails(webPassDetails);
     }
 }

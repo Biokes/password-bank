@@ -6,6 +6,7 @@ import africa.semoicolon.data.model.User;
 import africa.semoicolon.data.repo.UserRepository;
 import africa.semoicolon.dto.request.CreateUserRequest;
 import africa.semoicolon.dto.request.CreateWebDetailsRequest;
+import africa.semoicolon.dto.request.UpdatePasswordRequest;
 import africa.semoicolon.service.interFace.UserService;
 import africa.semoicolon.utils.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,13 @@ public class PasswordUserService implements UserService{
         findUserByUsername(username);
         return passwordDetails.countByUsername(username);
     }
+
+    @Override
+    public void updateSiteDetails(UpdatePasswordRequest webPassDetails){
+        validateUserNameExistence(webPassDetails.getUsername( ));
+        passwordDetails.updateWebsiteDetails(webPassDetails);
+    }
+
     private void validateUserNameExistence(String username){
         List<User> users = userRepository.findAll();
         for(User user : users){

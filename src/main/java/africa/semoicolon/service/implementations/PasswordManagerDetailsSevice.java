@@ -19,6 +19,7 @@ import java.util.Optional;
 import static africa.semoicolon.utils.Mapper.mapUpdate;
 import static africa.semoicolon.utils.Mapper.mapWebDetails;
 import static africa.semoicolon.utils.Validator.validate;
+import static africa.semoicolon.utils.Validator.validateUpdate;
 
 @Service
 public class PasswordManagerDetailsSevice implements WebsiteDetailsService{
@@ -50,7 +51,7 @@ public class PasswordManagerDetailsSevice implements WebsiteDetailsService{
         return response;
     }
     public void updateWebsiteDetails(UpdatePasswordRequest updateRequest){
-        Validator.validateUpdate(updateRequest);
+        validateUpdate(updateRequest);
         validateSiteExistence(updateRequest.getSitename(), updateRequest.getUsername( ));
         WebsiteDetail found = repository.findByWebsiteNameAndUsernameAndAndWebsiteUsername(
                 updateRequest.getSitename(),

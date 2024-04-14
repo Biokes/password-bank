@@ -37,5 +37,7 @@ public class Validator{
     public static void validateCreateRequest(CreateUserRequest createRequest){
         validate(createRequest.getUsername());
         validate(createRequest.getPassword());
+        validate(createRequest.getLastname( ));
+        validate(createRequest.getFirstname( ));
     }
 }

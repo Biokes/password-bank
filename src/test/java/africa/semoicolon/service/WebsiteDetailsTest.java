@@ -83,10 +83,10 @@ public class WebsiteDetailsTest{
     public void updatePasswordDetails_testWebsiteDetailsIsUpdated(){
         UpdatePasswordRequest updateRequest = new UpdatePasswordRequest();
         updateRequest.setSitename("www.google.com");
-        updateRequest.setPassword("pass");
+        updateRequest.setPassword("123456789");
         updateRequest.setUsername("name");
         updateRequest.setSiteUsername("username");
-        updateRequest.setSitePassword("123456789");
+        updateRequest.setSitePassword("pass");
         assertThrows(SiteNotFoundException.class, ()->websiteDetailsService.updateWebsiteDetails(updateRequest));
         CreateWebDetailsRequest webDetails= new CreateWebDetailsRequest();
         webDetails.setUsername("name");

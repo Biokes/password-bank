@@ -1,4 +1,4 @@
-package africa.semoicolon.repo.repositoryTest;
+package africa.semoicolon.repo;
 
 import africa.semoicolon.data.model.WebsiteDetail;
 import africa.semoicolon.data.repo.WebsiteRepository;

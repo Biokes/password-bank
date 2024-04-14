@@ -10,8 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.nio.file.attribute.UserPrincipalNotFoundException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -50,6 +48,7 @@ public class UserServiceTest{
         userService.register(createRequest);
         userService.saveSiteDetails(webDetails);
         assertEquals(1, userService.countnAllUserDetails("name"));
-
     }
+    @Test
+    public void updateWebDetails_testWebDetailsIsUpdated(){}
 }

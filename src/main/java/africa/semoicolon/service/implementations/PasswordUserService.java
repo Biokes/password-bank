@@ -16,7 +16,6 @@ import java.util.Optional;
 
 import static africa.semoicolon.utils.Validator.validate;
 import static africa.semoicolon.utils.Validator.validateCreateRequest;
-
 @Service
 public class PasswordUserService implements UserService{
     public void deleteAll(){
@@ -31,7 +30,7 @@ public class PasswordUserService implements UserService{
         return userRepository.count();
     }
     public void saveSiteDetails(CreateWebDetailsRequest webDetails){
-        validateUserExistence(webDetails.getUsername());
+        findUserByUsername(webDetails.getUsername());
         passwordDetails.saveDetails(webDetails);
     }
     public long countnAllUserDetails(String username){
@@ -39,7 +38,6 @@ public class PasswordUserService implements UserService{
         validateUserExistence(username);
         return passwordDetails.countByUsername(username);
     }
-
     private void validateUserExistence(String username){
         List<User> users = userRepository.findAll();
         for(User user : users){
@@ -52,8 +50,6 @@ public class PasswordUserService implements UserService{
       if(user.isPresent())
           throw new UserNotFoundException();
     }
-
-
     @Autowired
     private UserRepository userRepository;
     @Autowired

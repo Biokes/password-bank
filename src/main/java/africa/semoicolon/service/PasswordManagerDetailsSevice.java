@@ -32,12 +32,12 @@ public class PasswordManagerDetailsSevice implements WebsiteDetailsService{
     }
     public void deleteSite(DeleteWebDetails deleteDetails){
         Validator.validateDeleteSite(deleteDetails);
-
+        validateSiteExistence(deleteDetails.getSiteName());
         repository.deleteByUsernameAndWebsiteName(deleteDetails.getUsername(),
                 deleteDetails.getSiteName());
     }
-    private void validateSiteExistence(DeleteWebDetails details){
-        Optional<WebsiteDetail> found = repository.findBySiteName(details.getSiteName());
+    private void validateSiteExistence(String details){
+        Optional<WebsiteDetail> found = repository.findByWebsiteName(details);
         if( found.isEmpty())
             throw new SiteNotFoundException();
     }

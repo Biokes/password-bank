@@ -11,5 +11,5 @@ public interface WebsiteRepository extends MongoRepository<WebsiteDetail, String
 
     void deleteByUsernameAndWebsiteName(String username, String WebsiteName);
 
-    Optional<WebsiteDetail> findBySiteName(String siteName);
+    Optional<WebsiteDetail> findByWebsiteName(String siteName);
 }

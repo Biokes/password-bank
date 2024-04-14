@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import static africa.semoicolon.utils.Encryption.decrypt;
 import static africa.semoicolon.utils.Mapper.mapUpdate;
 import static africa.semoicolon.utils.Mapper.mapWebDetails;
 import static africa.semoicolon.utils.Validator.validate;
@@ -70,7 +71,7 @@ public class PasswordManagerDetailsSevice implements WebsiteDetailsService{
         for(WebsiteDetail details: given){
             output.append(String.format("Site : %s\nSite username : %s\n Website Password : %s\n",
                     details.getWebsiteName(), details.getWebsiteUsername(),
-                    details.getWebsitePassword()));
+                    decrypt(details.getWebsitePassword(),100)));
         }
         return output.toString();
     }

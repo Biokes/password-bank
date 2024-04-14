@@ -5,10 +5,13 @@ import africa.semoicolon.data.model.WebsiteDetail;
 import africa.semoicolon.data.repo.WebsiteRepository;
 import africa.semoicolon.dto.CreateWebDetailsRequest;
 import africa.semoicolon.dto.DeleteWebDetails;
+import africa.semoicolon.dto.UpdatePasswordRequest;
+import africa.semoicolon.dto.ViewAllRequest;
 import africa.semoicolon.utils.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import static africa.semoicolon.utils.Mapper.mapWebDetails;
@@ -36,6 +39,29 @@ public class PasswordManagerDetailsSevice implements WebsiteDetailsService{
         repository.deleteByUsernameAndWebsiteName(deleteDetails.getUsername(),
                 deleteDetails.getSiteName());
     }
+    public String viewAllSiteDetails(ViewAllRequest request){
+        Validator.validateViewRequest(request);
+        List<WebsiteDetail> found =  repository.findAllByUsername(request.getUsername());
+        return matchDetailsToFound(found);
+    }
+    public void updateWebsiteDetails(UpdatePasswordRequest updateRequest){
+
+    }
+
+    private String matchDetailsToFound(List<WebsiteDetail> given){
+        StringBuilder output = new StringBuilder();
+        if(given.isEmpty()){
+            output.append("no password saved yet");
+            return output.toString();
+        }
+        for(WebsiteDetail details: given){
+            output.append(String.format("Site : %s\nSite username : %s\n Website Password : %s\n",
+                    details.getWebsiteName(), details.getWebsiteUsername(),
+                    details.getWebsitePassword()));
+        }
+        return output.toString();
+    }
+
     private void validateSiteExistence(String details){
         Optional<WebsiteDetail> found = repository.findByWebsiteName(details);
         if( found.isEmpty())
